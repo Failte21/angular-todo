@@ -5,20 +5,20 @@ import { AppComponent } from './app.component';
 import {TodoListComponent} from './todo-list.component';
 import {TodoComponent} from './todo.component';
 import {TodoService} from './todo-service';
-import {TodoAddformComponent} from './todo-addform.component';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoComponent,
-    TodoAddformComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [
-    TodoService
+    TodoService,
   ],
   bootstrap: [AppComponent]
 })

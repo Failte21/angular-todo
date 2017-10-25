@@ -1,5 +1,9 @@
 <div>
-  <app-todo-addform></app-todo-addform>
+  <div>
+    <label>Todo: </label>
+    <input #todoName />
+    <button (click)="add(todoName.value); todoName.value=''">Add</button>
+  </div>
   <ul *ngFor="let todo of todos">
     <li><app-todo [todo]="todo"></app-todo></li>
   </ul>
