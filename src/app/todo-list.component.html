@@ -1,10 +1,18 @@
-<div>
-  <div>
-    <label>Todo: </label>
-    <input #todoName />
-    <button (click)="add(todoName.value); todoName.value=''">Add</button>
-  </div>
-  <ul *ngFor="let todo of todos">
-    <li><app-todo [todo]="todo"></app-todo></li>
-  </ul>
-</div>
+<form #f (ngSubmit)="onSubmit(f)">
+  <input type="text" class="form-control" name="text" required [(ngModel)]="todo">
+  <button type="submit">Add</button>
+</form>
+<ul *ngFor="let todo of todos">
+  <li>
+    <div>
+      <span>{{todo.text}}</span>
+      <button (click)="delete(todo)">
+        <i class="fa fa-times"></i>
+      </button>
+      <span *ngIf="todo.completed; else completeBtn"><i class="fa fa-check"></i></span>
+      <ng-template #completeBtn>
+        <button (click)="complete(todo)">Mark as completed</button>
+      </ng-template>
+    </div>
+  </li>
+</ul>

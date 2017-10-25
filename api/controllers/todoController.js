@@ -18,9 +18,21 @@ export const create = (req, res) => {
   })
 }
 
-export const update = field => (req, res) => {
-    Todo.findByIdAndUpdate(req.body.id, {[field]: req.body[field]}, (err, user) => {
-        if (err) return res.json({message: "fetchError.update"})
-        res.json({body: true, message: "fetchSuccess.update"})
-    })
+export const remove = (req, res) => {
+  Todo.findByIdAndRemove(req.params.id, (err, todo) => {
+    console.log(todo);
+    if (err) return res.status(200).send(err);
+    if (todo) return res.json({body: todo})
+    return res.json({message: 'an error occured'})
+  })
+}
+
+export const update = (req, res) => {
+  const { field, value } = req.body;
+  if (field === null || value === null ) return res.status(200).json({message: "You should provide a field and a value"})
+  Todo.findByIdAndUpdate(req.params.id, {[field]: value}, (err, todo) => {
+    if (err) return res.status(500).send(err)
+    if (todo) return res.json({body: todo})
+    return res.json({message: "an error occured"});
+  })
 }
