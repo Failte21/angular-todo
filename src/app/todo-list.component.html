@@ -1,3 +1,6 @@
-<ul *ngFor="let todo of todos">
-  <li><my-todo [todo]="todo"></my-todo></li>
-</ul>
+<div>
+  <app-todo-addform></app-todo-addform>
+  <ul *ngFor="let todo of todos">
+    <li><app-todo [todo]="todo"></app-todo></li>
+  </ul>
+</div>

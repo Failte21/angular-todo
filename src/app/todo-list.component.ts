@@ -4,7 +4,7 @@ import { Todo } from './todo';
 import {TODOS} from './mock-todos';
 
 @Component({
-  selector: 'todo-list',
+  selector: 'app-todo-list',
   templateUrl: './todo-list.component.html'
 })
 
