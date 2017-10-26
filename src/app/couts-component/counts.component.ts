@@ -1,27 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-
-const EXPENSES: Expense[] = [
-  {user: 'Liz', date: Date.now(), amount: 2, title: 'Coffee'},
-  {user: 'Leo', date: Date.now(), amount: 1.10, title: 'Baguette tradition'}
-];
-
-const COUNTS: Count[] = [
-  {users: ['Liz', 'Leo'], _id: 0, title: 'life', expenses: EXPENSES}
-];
-
-export class Expense {
-  user: String;
-  date: any;
-  amount: Number;
-  title: String;
-}
-
-export class Count {
-  _id: Number;
-  title: string;
-  users: string[];
-  expenses: Expense[];
-}
+import { Count } from '../count';
+import { COUNTS } from '../mock-counts';
 
 @Component({
   selector: 'app-counts',
