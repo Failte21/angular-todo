@@ -1,5 +1,5 @@
 let mongoose = require('mongoose'),
-    Todo = require('../models/TodoModel')
+    Todo = require('../models/todoModel')
 
 export const listAll = (req, res) => {
     Todo.find({}, (err, user) => {
