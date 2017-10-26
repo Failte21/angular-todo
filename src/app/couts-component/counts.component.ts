@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { Count } from '../count';
 import { COUNTS } from '../mock-counts';
+import {CountService} from '../count.service';
+import {EXPENSES} from '../mock-expenses';
 
 @Component({
   selector: 'app-counts',
@@ -21,13 +23,15 @@ export class CountsComponent implements OnInit {
   counts: Count[];
   newCount: String = '';
   selected: Count;
+  constructor( private countService: CountService ) {};
   ngOnInit() {
-    this.counts = COUNTS;
+    this.counts = this.countService.getAll();
   }
   select(count: Count): void {
-    this.selected = count;
+    this.selected = this.countService.get(count.title);
   }
   submit(): void {
+    this.counts = this.countService.create(COUNTS[0]);
     this.newCount = '';
   }
 }

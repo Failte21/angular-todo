@@ -8,6 +8,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {CountsComponent} from './couts-component/counts.component';
 import {CountComponent} from './count-component/count.component';
+import {CountService} from './count.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {CountComponent} from './count-component/count.component';
   ],
   providers: [
     TodoService,
+    CountService
   ],
   bootstrap: [AppComponent]
 })
