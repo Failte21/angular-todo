@@ -6,11 +6,13 @@ import {TodoListComponent} from './todo-list-component/todo-list.component';
 import {TodoService} from './todo-service';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
+import {CountsComponent} from './couts-component/counts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
+    CountsComponent
   ],
   imports: [
     BrowserModule,
