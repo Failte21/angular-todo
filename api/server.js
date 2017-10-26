@@ -4,7 +4,8 @@ let express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    todoRoute = require('./routes/todoRoute')
+    todoRoute = require('./routes/todoRoute'),
+    countRoutes = require('./routes/countRoutes')
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, {useMongoClient: true});
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 todoRoute(app)
+countRoutes(app)
 
 app.listen(port, () => {
     console.log('Angulat todp list RESTful API server started on: ' + port);
