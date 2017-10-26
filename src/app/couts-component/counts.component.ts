@@ -5,6 +5,10 @@ import { COUNTS } from '../mock-counts';
 @Component({
   selector: 'app-counts',
   template: `
+    <form (ngSubmit)="submit()">
+      <input type="text" [(ngModel)]="newCount" name="newCount" required>
+      New: {{newCount}}
+    </form>
     <h1>Liste des comptes</h1>
     <ul *ngFor="let count of counts">
       <button (click)="select(count)">{{count.title}}</button>
@@ -13,13 +17,17 @@ import { COUNTS } from '../mock-counts';
   `
 })
 
-export class CountsComponent implements OnInit{
+export class CountsComponent implements OnInit {
   counts: Count[];
+  newCount: String = '';
   selected: Count;
   ngOnInit() {
     this.counts = COUNTS;
   }
   select(count: Count): void {
     this.selected = count;
+  }
+  submit(): void {
+    this.newCount = '';
   }
 }

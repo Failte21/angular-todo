@@ -1,5 +1,6 @@
-<form #f (ngSubmit)="onSubmit(f)">
+<form (ngSubmit)="onSubmit()">
   <input type="text" class="form-control" name="text" required [(ngModel)]="todo">
+  {{todo}}
   <button type="submit">Add</button>
 </form>
 <ul *ngFor="let todo of todos">

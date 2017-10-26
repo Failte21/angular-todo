@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../todo-service';
 import { Todo } from '../todo';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,7 +16,7 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.todoService.getTodos().then(todos => this.todos = todos);
   }
-  onSubmit(f: NgForm): void {
+  onSubmit(): void {
     this.todoService.add(this.todo).then(todo => this.todos.push(todo));
     this.todo = '';
   }
