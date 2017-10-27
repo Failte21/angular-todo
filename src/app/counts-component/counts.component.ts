@@ -1,16 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import { Count } from '../count';
-import { COUNTS } from '../mock-counts';
 import {CountService} from '../count.service';
-import {EXPENSES} from '../mock-expenses';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-counts',
   template: `
-    <form (ngSubmit)="submit()">
-      <input type="text" [(ngModel)]="newCount" name="newCount" required>
-      New: {{newCount}}
-    </form>
+    <a routerLink="/createCount">New count</a>
     <h1>Liste des comptes</h1>
     <ul *ngFor="let count of counts">
       <button (click)="select(count)">{{count.title}}</button>
@@ -23,15 +19,20 @@ export class CountsComponent implements OnInit {
   counts: Count[];
   newCount: String = '';
   selected: Count;
-  constructor( private countService: CountService ) {};
+  constructor(
+    private countService: CountService,
+    private router: Router
+  ) {}
   ngOnInit() {
-    this.counts = this.countService.getAll();
+    this.countService.getAll()
+      .then(counts => this.counts = counts);
   }
-  select(count: Count): void {
-    this.selected = this.countService.get(count.title);
+  select(selected: Count): void {
+    this.countService.get(selected._id)
+      .then(count => this.selected = count);
   }
   submit(): void {
-    this.counts = this.countService.create(COUNTS[0]);
-    this.newCount = '';
+    // this.counts = this.countService.create(COUNTS[0]);
+    this.router.navigate(['countForm', this.newCount]);
   }
 }

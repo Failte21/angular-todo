@@ -11,6 +11,10 @@ export const getAll = (req, res) => {
   Count.find({}, handleReturn(req, res))
 }
 
+export const getOne = (req, res) => {
+  Count.findById(req.params.id, handleReturn(req, res))
+}
+
 export const create = (req, res) => {
   const count = new Count(req.body)
   count.save(handleReturn(req, res))
